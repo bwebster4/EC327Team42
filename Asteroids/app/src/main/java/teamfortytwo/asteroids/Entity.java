@@ -44,14 +44,10 @@ public class Entity {
     public void moveAtSpeed(){
 
             addPos(0, speed);
-<<<<<<< HEAD
-        }catch(NullPointerException e){
-            Log.i("GameView", "NullPointerException with entity at index ");
-        }
-=======
 
->>>>>>> origin/master
-    }
+        }
+
+
 
     //Set Functions
     public int addPos(float dx, float dy){
