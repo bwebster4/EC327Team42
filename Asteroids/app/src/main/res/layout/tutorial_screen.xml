@@ -15,7 +15,7 @@
         android:id="@+id/start"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/start_unhit"
+        android:background="@drawable/start_button"
         android:clickable="true" />
 
     <ImageButton
