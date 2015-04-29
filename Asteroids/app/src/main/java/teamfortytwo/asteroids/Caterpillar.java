@@ -53,7 +53,7 @@ public class Caterpillar extends Entity{
         if (hasMorphed) {
             addPos((int) (10 * Math.sin(pos.getY())), 0);
             if(frame == 0){
-                view.shoot(new Bullet(res, collisions, view, team, pos, size / 2));
+                view.shoot(new Bullet(res, collisions, view, team, new Vector(pos.getX() - 3 * size / 4, pos.getY()), size / 2));
             }
 
         }else if(frame == 0){

@@ -67,7 +67,9 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
 
     }
     public void shoot(){
-        entities.add(new Bullet(res, collisions, this, 0, player.getPos().copy(), screenWidth / 24));
+        Vector newPos = player.getPos().copy();
+        newPos.set(player.getPos().getX() + 3 * player.getSize() / 4, player.getPos().getY() + 3 * player.getSize() / 4);
+        entities.add(new Bullet(res, collisions, this, 0, newPos, screenWidth / 24));
     }
     public void shoot(Bullet bullet){
         entities.add(bullet);
