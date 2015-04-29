@@ -54,7 +54,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
 
 
         scoreText = new TextView(gameScreen);
-       // scoreText.setText("Score: " + getScore());
+        scoreText.setText("Score: " + getScore());
         scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
         scoreText.setTextSize(16f);
     }
@@ -98,8 +98,10 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
 
-        Log.i("Score", "" + scoreText.getLayout());
-//        scoreText.setText("Score: " + getScore());
+        scoreText = new TextView(gameScreen);
+        scoreText.setText("Score: " + getScore());
+        scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
+        scoreText.setTextSize(16f);
         scoreText.draw(canvas);
 
         for(int i = 0; i < entities.size(); i++){
@@ -111,8 +113,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
 
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
-
-        if(animation.getAnimatedValue() == 0){
+        if(frame == 0){
             if(numberOfCaterpillars < 10){
                 entities.add(new Caterpillar(res, collisions, this, new Vector(random.nextInt() % screenWidth, screenHeight), screenWidth / 12));
                 numberOfCaterpillars++;
