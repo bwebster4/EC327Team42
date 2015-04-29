@@ -1,20 +1,14 @@
 package teamfortytwo.asteroids;
 
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -32,7 +26,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
 
     public int frame = 0;
 
-    private Random random;
+    public static Random random;
 
     private GameScreen gameScreen;
     private int screenWidth, screenHeight;
@@ -65,6 +59,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         this.frame = frame;
     }
     public int getFrame(){ return frame; }
+    public int getScore(){ return score; }
 
     public void updatePlayer(float angle){
         float move = angle * (screenWidth / 80);
@@ -73,6 +68,9 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
     }
     public void shoot(){
         entities.add(new Bullet(res, collisions, this, 0, player.getPos().copy(), screenWidth / 24));
+    }
+    public void shoot(Bullet bullet){
+        entities.add(bullet);
     }
 
 
@@ -105,29 +103,8 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
             score += 1;
         }
         for(int i = 0; i < entities.size(); i++){
-                entities.get(i).moveAtSpeed();
+                entities.get(i).update(frame);
         }
     }
 
-//    private class CreateEnemies extends TimerTask{
-//
-//        GameView view;
-//        public CreateEnemies(GameView view){
-//            this.view = view;
-//        }
-//
-//        @Override
-//        public void run() {
-//            entities.add(new Caterpillar(res, collisions, view, new Vector(random.nextInt() % screenWidth, screenHeight), screenWidth / 12));
-//        }
-//
-//    }
-//    private class MoveEntities extends TimerTask{
-//
-//
-//        @Override
-//        public void run() {
-//
-//        }
-//    }
 }

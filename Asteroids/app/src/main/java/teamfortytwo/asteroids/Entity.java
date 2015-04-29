@@ -41,9 +41,9 @@ public class Entity {
     public Rect getBounds(){ return bounds; }
     public int getTeam() { return team; }
 
-    public void moveAtSpeed(){
+    public void update(int frames){
 
-            addPos(0, speed);
+            addPos(0, speed); //adds the speed to position to move the entity
 
     }
 
@@ -51,9 +51,11 @@ public class Entity {
     public int addPos(float dx, float dy){
         /*
         Set the position of the entity
+        check the position with collisions to make sure it is not offscreen or colliding
+        if it is colliding, destroy the entity by calling destroy()
+        if it is offscreen after the position was added, move it back to where it was
+        return check for use with child classes
          */
-
-
 
         pos.setX((int) dx + pos.getX());
         pos.setY((int) dy + pos.getY());
@@ -69,24 +71,36 @@ public class Entity {
             destroy();
         }
 
-
-
         return check;
     }
 
     protected void setBounds(int left, int top, int right, int bottom){
-        //initializes the image onto the screen, android has 0, 0 as the top left corner
+        /*
+        initializes the image onto the screen
+        android has 0, 0 as the top left corner
+
+        sets the bounding rectangle to be the same as where the image is
+        the bounding rectangle is used in collision detection
+         */
         image.setBounds(left, top, right, bottom);
         bounds = image.getBounds();
     }
 
 
     public void draw(Canvas canvas){
-        setBounds(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size); //updates the position of the image on the screen
-        image.draw(canvas); //Draws the image
+        /*
+        updates the position of the image on the screen
+        then draw the image onto the canvas provided
+         */
+        setBounds(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size); //
+        image.draw(canvas);
     }
 
     public void destroy(){
+        /*
+        calls destroy entity in view, which should remove the entity from its array,
+        or endgame if it is the player
+         */
         view.destroyEntity(this);
 
     }
