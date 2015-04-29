@@ -40,8 +40,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_title"
-        android:background="@drawable/title"
+        android:id="@+id/another_title"
+        android:background="@drawable/another_title"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

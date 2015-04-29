@@ -45,7 +45,9 @@ public class Entity {
 
             addPos(0, speed); //adds the speed to position to move the entity
 
-    }
+        }
+
+
 
     //Set Functions
     public int addPos(float dx, float dy){
