@@ -22,4 +22,8 @@ public class Bee extends Entity{
     }
 
 
+    @Override
+    public int getType() {
+        return 0;
+    }
 }

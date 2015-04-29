@@ -1,8 +1,8 @@
 package teamfortytwo.asteroids;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +17,7 @@ import android.widget.ImageButton;
  */
 
 
-public class TutorialScreen extends ActionBarActivity implements OnClickListener{
+public class TutorialScreen extends Activity implements OnClickListener{
 
 
     private ImageButton backButton;
@@ -27,7 +27,7 @@ public class TutorialScreen extends ActionBarActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutorial_screen);
 
-        backButton = (ImageButton) findViewById(R.id.start);
+        backButton = (ImageButton) findViewById(R.id.back);
         backButton.setOnClickListener(this);
     }
 
@@ -43,7 +43,8 @@ public class TutorialScreen extends ActionBarActivity implements OnClickListener
     public void onClick(View v){
 
         switch(v.getId()){
-            case R.id.start: {
+            case R.id.back: {
+                finish();
                 break;
             }
             default: {
