@@ -16,11 +16,16 @@ public class Bullet extends Entity {
         setBounds(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size); //initializes the image onto the screen, android has 0, 0 as the top left corner
 
         if(team == 0)
-            speed = GameScreen.screenHeight / 25;
+            speed = GameScreen.screenHeight / 35;
         else
-            speed = - GameScreen.screenHeight / 25;
+            speed = - GameScreen.screenHeight / 35;
 
         this.team = team;
+    }
+
+    @Override
+    public int getType() {
+        return 2;
     }
 
     @Override

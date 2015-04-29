@@ -13,9 +13,20 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewAnimator;
+
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
+import org.w3c.dom.UserDataHandler;
 
 /**
  * Created by BrandonWebster on 4/8/15.
@@ -39,7 +50,7 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        Log.i("GameScreen", "MainScreen = " + mainScreen);
+        Log.i("GameScreen", "Created");
         //Used for determining screen size in pixels
         DisplayMetrics displayMetrics = new DisplayMetrics();
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(this.WINDOW_SERVICE);
@@ -72,8 +83,18 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
         viewAnim.addUpdateListener(view);
         viewAnim.start();
 
+
+
+
         view.setOnClickListener(this);
         setContentView(view);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.i("GameScreen", "Destroyed");
+        view.destroyDrawingCache();
     }
 
     public void endGame(){

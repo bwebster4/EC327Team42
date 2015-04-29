@@ -1,6 +1,5 @@
 package teamfortytwo.asteroids;
 
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -9,7 +8,7 @@ import android.util.Log;
 /**
  * Created by BrandonWebster on 4/19/15.
  */
-public class Entity {
+public abstract class Entity {
 
     protected Drawable image; //This is the image drawn to the screen
     protected Vector pos; //The position of the Bee on the screen
@@ -40,6 +39,7 @@ public class Entity {
     }
     public Rect getBounds(){ return bounds; }
     public int getTeam() { return team; }
+    public abstract int getType();
 
     public void update(int frames){
 
@@ -69,7 +69,6 @@ public class Entity {
             pos.setY(pos.getY() - (int) dy);
         }
         if(check == Collisions.colliding) {
-            Log.i("Entity", "Collision with entity " + this);
             destroy();
         }
 

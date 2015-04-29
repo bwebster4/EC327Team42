@@ -7,7 +7,7 @@ import android.content.res.Resources;
  */
 public class Caterpillar extends Entity{
 
-    private int timer = 0;
+    private int timer = 0, shootTimer = 0;
     private static int morphTime;
     private boolean hasMorphed = false;
 
@@ -31,9 +31,14 @@ public class Caterpillar extends Entity{
         setBounds(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size); //initializes the image onto the screen, android has 0, 0 as the top left corner
 
         speed = - GameScreen.screenHeight / 200;
-        morphTime = GameView.random.nextInt(5);
+        morphTime = 2 + GameView.random.nextInt(5);
 
         team = 1;
+    }
+
+    @Override
+    public int getType() {
+        return 1;
     }
 
     @Override
@@ -50,10 +55,15 @@ public class Caterpillar extends Entity{
 
         super.update(frame);
 
+
         if (hasMorphed) {
-            addPos((int) (10 * Math.sin(pos.getY())), 0);
+            addPos((int) (10 * Math.sin(Math.toRadians(pos.getY()))), 0);
             if(frame == 0){
-                view.shoot(new Bullet(res, collisions, view, team, new Vector(pos.getX() - 3 * size / 4, pos.getY()), size / 2));
+                shootTimer += 1;
+                if(shootTimer == 3){
+                    view.shoot(new Bullet(res, collisions, view, team, new Vector(pos.getX() - 3 * size / 4, pos.getY()), size / 2));
+                    shootTimer = 0;
+                }
             }
 
         }else if(frame == 0){
