@@ -99,7 +99,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         super.onDraw(canvas);
 
         scoreText = new TextView(gameScreen);
-        scoreText.setText("Score: " + getScore());
+        scoreText.setText("Score: " + getScore()/5);
         scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
         scoreText.setTextSize(16f);
         scoreText.draw(canvas);
