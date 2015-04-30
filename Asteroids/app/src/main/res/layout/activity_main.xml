@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start"
-        android:background="@drawable/start_unhit"
+        android:background="@drawable/start_button"
         android:clickable="true"
         android:layout_above="@+id/score"
         android:layout_centerHorizontal="true"

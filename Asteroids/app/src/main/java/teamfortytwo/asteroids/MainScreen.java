@@ -1,5 +1,6 @@
 package teamfortytwo.asteroids;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -68,7 +69,7 @@ public class MainScreen extends ActionBarActivity implements OnClickListener{
     public void startGame(){
 
         Intent gameActivity = new Intent(MainScreen.this, GameScreen.class); //To create an activity, you need to declare an intent with the parent activty, and the activity you want to create
-
+        gameActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(gameActivity); //This is how you start an activity
 
     }
@@ -77,7 +78,7 @@ public class MainScreen extends ActionBarActivity implements OnClickListener{
         Log.i("Main", "startScore() called");
 
         Intent scoreActivity = new Intent (MainScreen.this,ScoreScreen.class );
-
+        scoreActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(scoreActivity);
     }
 
@@ -85,7 +86,7 @@ public class MainScreen extends ActionBarActivity implements OnClickListener{
         Log.i("Main", "startTutorial() called");
 
         Intent tutActivity = new Intent (MainScreen.this, TutorialScreen.class);
-
+        tutActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(tutActivity);
 
     }
