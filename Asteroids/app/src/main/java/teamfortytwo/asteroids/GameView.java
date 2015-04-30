@@ -120,7 +120,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).draw(canvas);}}
 
-        
+
         player.draw(canvas);
     }
 
