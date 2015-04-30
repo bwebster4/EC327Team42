@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -43,6 +44,7 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
 
     public GameView(Context context) {
         super(context);
+
 
         gameScreen = (GameScreen) context;
         this.screenHeight = GameScreen.screenHeight;
