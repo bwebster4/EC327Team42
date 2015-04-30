@@ -1,10 +1,13 @@
 package teamfortytwo.asteroids;
 
 import android.animation.ValueAnimator;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
     private GameScreen gameScreen;
     private int screenWidth, screenHeight;
 
+    Bundle bundle=new Bundle();
+
     public GameView(Context context) {
         super(context);
 
@@ -57,13 +62,15 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         scoreText.setText("Score: " + getScore());
         scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
         scoreText.setTextSize(16f);
-    }
 
+
+
+    }
     public void setFrame(int frame){
         this.frame = frame;
     }
     public int getFrame(){ return frame; }
-    public int getScore(){ return score; }
+    public int getScore(){ return score/5; }
 
     public void updatePlayer(float angle){
         float move = angle * (screenWidth / 80);
@@ -99,11 +106,10 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         super.onDraw(canvas);
 
         scoreText = new TextView(gameScreen);
-        scoreText.setText("Score: " + getScore()/5);
+        scoreText.setText("Score: " + getScore());
         scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
         scoreText.setTextSize(16f);
         scoreText.draw(canvas);
-
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).draw(canvas);
 

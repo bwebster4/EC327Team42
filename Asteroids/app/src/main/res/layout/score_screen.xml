@@ -31,7 +31,7 @@
         android:layout_height="400dp"
         android:id="@+id/scorelist"
         android:textSize="30dp"
-        android:text="1st: 15 \n2nd: 13\n3rd: 10\netc."
+        android:text="1st: 15 \n2nd: 13\n3rd: 10\n4th: 10\n5th 7"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

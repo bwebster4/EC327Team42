@@ -3,6 +3,7 @@ package teamfortytwo.asteroids;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -46,7 +47,6 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
     static int screenWidth;
     static int screenHeight;
     private MainScreen mainScreen;
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -92,9 +92,12 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
 
     @Override
     public void onDestroy(){
+        Intent i =new Intent(GameScreen.this, ScoreScreen.class);
+        i.putExtra("theScore",view.getScore());
         super.onDestroy();
         Log.i("GameScreen", "Destroyed");
         view.destroyDrawingCache();
+        startActivity(i);
     }
 
     public void endGame(){
