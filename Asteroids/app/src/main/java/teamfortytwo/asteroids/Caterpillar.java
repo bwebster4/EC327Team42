@@ -60,7 +60,7 @@ public class Caterpillar extends Entity{
             addPos((int) (10 * Math.sin(Math.toRadians(pos.getY()))), 0);
             if(frame == 0){
                 shootTimer += 1;
-                if(shootTimer == 12){
+                if(shootTimer == 8){
                     view.shoot(new Bullet(res, collisions, view, team, new Vector(pos.getX() - 3 * size / 4, pos.getY()), size / 2));
                     shootTimer = 0;
                 }
