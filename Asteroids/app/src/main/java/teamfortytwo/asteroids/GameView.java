@@ -94,9 +94,13 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
             gameScreen.endGame();
         }else if(entity.getType() == 1)
             numberOfCaterpillars--;
+        if(entities!=null) {
+            entities.remove(entity);
+        }
 
-        entities.remove(entity);
-
+    }
+    public void nullEntityArray(){
+        entities=null;
     }
 
     public ArrayList<Entity> getEntities(){
@@ -112,26 +116,29 @@ public class GameView extends View implements ValueAnimator.AnimatorUpdateListen
         scoreText.layout(0, 0, screenWidth / 6, screenHeight / 12);
         scoreText.setTextSize(16f);
         scoreText.draw(canvas);
+        if (entities!=null){
         for(int i = 0; i < entities.size(); i++){
-            entities.get(i).draw(canvas);
+            entities.get(i).draw(canvas);}}
 
-        }
+        
         player.draw(canvas);
     }
 
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
+    if (entities!=null){
         if(frame == 0){
-            if(numberOfCaterpillars < 10){
+            //if(numberOfCaterpillars < 10){
                 entities.add(new Caterpillar(res, collisions, this, new Vector(random.nextInt() % screenWidth, screenHeight), screenWidth / 12));
                 numberOfCaterpillars++;
+            System.gc();
 
-            }
+           // }
             score += 1;
         }
         for(int i = 0; i < entities.size(); i++){
                 entities.get(i).update(frame);
         }
     }
-
+}
 }

@@ -88,6 +88,7 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
 
         view.setOnClickListener(this);
         setContentView(view);
+        System.gc();
     }
 
     @Override
@@ -98,11 +99,14 @@ public class GameScreen extends Activity implements OnClickListener, SensorEvent
         Log.i("GameScreen", "Destroyed");
         view.destroyDrawingCache();
         startActivity(i);
+
     }
 
     public void endGame(){
         finish();
-    }
+        view.nullEntityArray();
+        System.gc();
+        }
 
     @Override
     protected void onResume(){
