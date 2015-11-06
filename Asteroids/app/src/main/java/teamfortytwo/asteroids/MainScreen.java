@@ -31,6 +31,8 @@ public class MainScreen extends ActionBarActivity implements OnClickListener{
 
         tutButton = (ImageButton) findViewById(R.id.tutorial);
         tutButton.setOnClickListener(this);
+
+        System.gc();
     }
 
 

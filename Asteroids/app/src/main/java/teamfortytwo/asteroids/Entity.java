@@ -25,6 +25,7 @@ public abstract class Entity {
         this.pos = pos; //sets the position vector
         this.collisions = collisions;
         this.bounds = new Rect(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size);
+        System.gc();
     }
 
     //Get Functions

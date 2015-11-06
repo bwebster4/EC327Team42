@@ -55,6 +55,8 @@ public class ScoreScreen extends Activity implements OnClickListener{
 
         //displays new scores in the text box
         scoreboard.setText("1st: "+HighScores[0] + "s\n2nd: "+HighScores[1]+"s\n3rd: "+HighScores[2]+"s\n4th: "+HighScores[3]+"s\n5th: "+HighScores[4]+"s");
+
+        System.gc();
     }
 
 

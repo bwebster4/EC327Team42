@@ -31,7 +31,7 @@ public class Caterpillar extends Entity{
         setBounds(pos.getX(), pos.getY(), pos.getX() + size, pos.getY() + size); //initializes the image onto the screen, android has 0, 0 as the top left corner
 
         speed = - GameScreen.screenHeight / 200;
-        morphTime = 2 + GameView.random.nextInt(5);
+        morphTime = 3 + GameView.random.nextInt(5);
 
         team = 1;
     }
@@ -60,7 +60,7 @@ public class Caterpillar extends Entity{
             addPos((int) (10 * Math.sin(Math.toRadians(pos.getY()))), 0);
             if(frame == 0){
                 shootTimer += 1;
-                if(shootTimer == 3){
+                if(shootTimer == 8){
                     view.shoot(new Bullet(res, collisions, view, team, new Vector(pos.getX() - 3 * size / 4, pos.getY()), size / 2));
                     shootTimer = 0;
                 }
